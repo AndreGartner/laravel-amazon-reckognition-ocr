@@ -1,3 +1,64 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+@import "cropperjs/dist/cropper.min.css";
+
+.image-recognition {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.image-recognition .image-recognition__header {
+    margin-bottom: 20px;
+}
+
+.image-recognition .image-recognition__header .title {
+    text-align: center;
+}
+
+form .image-result {
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    flex-direction: column;
+}
+
+form .image-result p { margin-bottom: 10px; }
+
+form .image-result .crop-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+    align-items: center;
+    background: #CCCCCC;
+    justify-content: center;
+    border: 1px solid #979797;
+}
+
+form .image-result .confirm-result {
+    display: flex;
+    flex-direction: row;
+    height: min-content;
+    justify-content: space-evenly;
+}
+
+form .image-result .confirm-crop-row {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.result-btn:first-of-type {
+    color: #2F935A;
+}
+
+.result-btn:last-of-type {
+    color: #D50000;
+}

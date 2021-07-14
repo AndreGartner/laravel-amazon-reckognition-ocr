@@ -28,4 +28,11 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/recognition', function () {
+    return Inertia::render('Recognition');
+})->middleware(['auth', 'verified'])->name('recognition.index');
+
+Route::post('/recognize', 'App\Http\Controllers\RecognizeController@recognize')
+    ->name('recognition.save');
+
 require __DIR__.'/auth.php';

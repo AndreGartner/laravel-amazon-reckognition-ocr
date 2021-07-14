@@ -20,6 +20,8 @@ mix.js('resources/js/app.js', 'public/js')
     ])
     .webpackConfig(require('./webpack.config'));
 
+mix.copy('node_modules/cropperjs/dist/cropper.min.js', 'public/js');
+
 if (mix.inProduction()) {
     mix.version();
 }
