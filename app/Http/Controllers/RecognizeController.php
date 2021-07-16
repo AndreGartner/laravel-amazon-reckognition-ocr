@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\File;
 use Illuminate\Http\Request;
+use Aws\Rekognition\RekognitionClient;
 use Illuminate\Support\Facades\Storage;
 
 class RecognizeController extends Controller
@@ -28,7 +29,22 @@ class RecognizeController extends Controller
 
             $file->save();
 
-            return response(['result' => $file], 201);
+            $reckognitionClient = new RekognitionClient([
+                'version' => 'latest',
+                'region' => 'us-east-1'
+            ]);
+
+            $result = $reckognitionClient->detectText([
+                'Image' => ['Bytes' => Storage::disk('s3')->get($path)]
+            ]);
+
+            $string = '';
+
+            foreach ($result['TextDetections'] as $item) {
+                $string .= ' '.$item['DetectedText'];
+            }
+
+            return response(['result' => $string], 200);
 
         } catch (\Exception $e) {
             return response(['message' => 'Error on Recognize image!'], 400);
